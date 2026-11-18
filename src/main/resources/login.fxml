@@ -13,13 +13,14 @@
       alignment="CENTER"
       spacing="12"
       prefWidth="350"
-      prefHeight="250">
+      prefHeight="300">
 
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
-    <Label text="Login" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+    <Label text="Login"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
 
     <TextField fx:id="usernameField"
                promptText="Username"
@@ -29,7 +30,16 @@
                    promptText="Password"
                    maxWidth="250"/>
 
-    <Button text="Login" onAction="#handleLogin" maxWidth="250"/>
+    <Button fx:id="loginButton"
+            text="Login"
+            onAction="#handleLogin"
+            maxWidth="250"/>
+
+    <Button fx:id="synchronizationButton"
+            text="Synchronization Test"
+            onAction="#handleSynchronizationTest"
+            maxWidth="250"/>
 
     <Label fx:id="messageLabel" wrapText="true"/>
+
 </VBox>

@@ -1,10 +1,12 @@
+
 /**
  * Represents a user with a username and password.
  * Validates the username and password before storing them.
  */
 public class User {
-    private String username;
-    private String password;
+
+    private final String username;
+    private final String password;
 
     /**
      * Creates a user after validating the username and password.
@@ -14,28 +16,39 @@ public class User {
      * @throws IllegalArgumentException if the username or password is invalid
      */
     public User(String username, String password) {
+
+        // Check that the username is not null or empty.
+        if (username == null || username.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Please enter a valid Email as username");
+        }
+
         // Check that the username is not too long.
-        if (username != null && username.length() > 50)
+        if (username.length() > 50) {
             throw new IllegalArgumentException(
                     "Username is too long, try something shorter");
+        }
 
         int atIndex = username.indexOf("@");
         int dotIndex = username.lastIndexOf(".");
 
         // Check that the username contains a valid email structure.
-        if (atIndex <= 0 || atIndex == username.length() - 1)
+        if (atIndex <= 0 || atIndex == username.length() - 1) {
             throw new IllegalArgumentException(
                     "Please enter a valid Email as username");
+        }
 
         // Check that there is exactly one @ symbol.
-        if (username.indexOf('@') != username.lastIndexOf('@'))
+        if (username.indexOf('@') != username.lastIndexOf('@')) {
             throw new IllegalArgumentException(
                     "Please enter a valid Email as username");
+        }
 
         // Ensure that the domain suffix contains at least two letters.
-        if (dotIndex <= atIndex + 1 || dotIndex >= username.length() - 2)
+        if (dotIndex <= atIndex + 1 || dotIndex >= username.length() - 2) {
             throw new IllegalArgumentException(
                     "Please enter a valid Email as username");
+        }
 
         // Check that all characters after the last dot are letters.
         for (int i = dotIndex + 1; i < username.length(); i++) {
@@ -108,7 +121,7 @@ public class User {
         // Check that the password is not too long.
         if (password.length() > 12) {
             throw new IllegalArgumentException(
-                    "Your password is too long, try a shorter one ");
+                    "Your password is too long, try a shorter one");
         }
 
         boolean hasLetter = false;
